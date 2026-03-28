@@ -17,11 +17,11 @@ const CTASection = () => {
           </p>
           <Button
             size="lg"
-            onClick={() => navigate("/cadastro")}
+            onClick={() => navigate("/criar")}
             className="bg-background text-foreground hover:bg-background/90 text-lg px-10 py-6 rounded-full relative z-10"
           >
             <Heart className="mr-2 h-5 w-5 text-primary" />
-            Criar Minha Lembrança
+            Criar Minha Surpresa
           </Button>
         </div>
       </div>
