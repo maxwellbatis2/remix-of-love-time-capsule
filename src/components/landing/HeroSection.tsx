@@ -25,11 +25,11 @@ const HeroSection = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8 relative z-10">
-        <Button size="lg" className="bg-gradient-cta text-primary-foreground hover:opacity-90 text-lg px-8 py-6 rounded-full shadow-glow">
+        <Button size="lg" onClick={() => navigate("/cadastro")} className="bg-gradient-cta text-primary-foreground hover:opacity-90 text-lg px-8 py-6 rounded-full shadow-glow">
           <Heart className="mr-2 h-5 w-5" />
           Criar Lembrança Especial!
         </Button>
-        <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted text-lg px-8 py-6 rounded-full">
+        <Button size="lg" variant="outline" onClick={() => navigate("/demo")} className="border-border text-foreground hover:bg-muted text-lg px-8 py-6 rounded-full">
           <QrCode className="mr-2 h-5 w-5" />
           Ver demonstração do App
         </Button>
