@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { Heart, Music, Camera, ArrowLeft, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import coupleImg from "@/assets/hero-couple.jpg";
 import couple1 from "@/assets/couple-1.webp";
 import couple2 from "@/assets/couple-2.webp";
 
-const DEMO_START_DATE = new Date("2023-06-15T00:00:00");
+const DEMO_START_DATE = new Date("2026-02-01T00:00:00");
 
 const DemoPage = () => {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const DemoPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const photos = [coupleImg, couple1, couple2];
+  const photos = [couple1, couple2];
 
   const messages = [
     "Cada segundo ao seu lado é um presente. Te amo mais do que palavras podem expressar. 💕",
@@ -50,8 +49,8 @@ const DemoPage = () => {
       <div className="max-w-lg mx-auto px-4 py-8 space-y-8">
         {/* Couple Names */}
         <div className="text-center">
-          <h1 className="text-gradient text-4xl font-bold font-display mb-2">João & Maria</h1>
-          <p className="text-muted-foreground text-sm">Juntos desde 15 de Junho de 2023</p>
+          <h1 className="text-gradient text-4xl font-bold font-display mb-2">Maxwell & Gabrila</h1>
+          <p className="text-muted-foreground text-sm">Juntos desde 01/02/2026</p>
         </div>
 
         {/* Time Counter */}
@@ -82,15 +81,9 @@ const DemoPage = () => {
             <Camera className="h-5 w-5 text-primary" />
             <h2 className="text-foreground font-semibold">Nossos Momentos</h2>
           </div>
-
           <div className="rounded-xl overflow-hidden mb-3 aspect-square">
-            <img
-              src={photos[activePhoto]}
-              alt="Momento especial"
-              className="w-full h-full object-cover transition-all duration-500"
-            />
+            <img src={photos[activePhoto]} alt="Momento especial" className="w-full h-full object-cover transition-all duration-500" />
           </div>
-
           <div className="flex gap-2 justify-center">
             {photos.map((photo, i) => (
               <button
@@ -112,7 +105,6 @@ const DemoPage = () => {
             <Heart className="h-5 w-5 text-primary fill-primary" />
             <h2 className="text-foreground font-semibold">Mensagens de Amor</h2>
           </div>
-
           <div className="space-y-4">
             {messages.map((msg, i) => (
               <div key={i} className="bg-muted rounded-xl p-4 border-l-2 border-primary">
@@ -128,7 +120,6 @@ const DemoPage = () => {
             <Music className="h-5 w-5 text-primary" />
             <h2 className="text-foreground font-semibold">Nossa Música</h2>
           </div>
-
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
@@ -140,11 +131,7 @@ const DemoPage = () => {
               <p className="text-foreground font-medium truncate">Perfect</p>
               <p className="text-muted-foreground text-sm truncate">Ed Sheeran</p>
               <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
-                <div
-                  className={`h-full bg-gradient-cta rounded-full transition-all duration-1000 ${
-                    isPlaying ? "w-1/3" : "w-0"
-                  }`}
-                />
+                <div className={`h-full bg-gradient-cta rounded-full transition-all duration-1000 ${isPlaying ? "w-1/3" : "w-0"}`} />
               </div>
             </div>
           </div>
@@ -155,11 +142,11 @@ const DemoPage = () => {
           <p className="text-muted-foreground">Gostou? Crie a sua agora!</p>
           <Button
             size="lg"
-            onClick={() => navigate("/cadastro")}
+            onClick={() => navigate("/criar")}
             className="bg-gradient-cta text-primary-foreground hover:opacity-90 text-lg px-10 py-6 rounded-full shadow-glow w-full"
           >
             <Heart className="mr-2 h-5 w-5" />
-            Criar Minha Lembrança
+            Criar Minha Surpresa
           </Button>
         </div>
       </div>
