@@ -36,6 +36,7 @@ const plans = [
 ];
 
 const PricingSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 px-4">
       <div className="container max-w-4xl">
