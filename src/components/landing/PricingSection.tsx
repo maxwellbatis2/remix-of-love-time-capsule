@@ -1,34 +1,38 @@
-import { Check, X } from "lucide-react";
+import { Check, X, Crown, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
-    name: "Lembrança Especial",
-    price: "R$ 29",
-    period: "/único",
+    name: "Vitalício",
+    price: "R$ 19,99",
+    period: "/pagamento único",
     popular: false,
+    icon: Crown,
     features: [
-      { text: "1 ano de acesso ao app", included: true },
+      { text: "Página permanente", included: true },
       { text: "Até 3 fotos especiais", included: true },
-      { text: "Contador personalizado", included: true },
+      { text: "Contador em tempo real", included: true },
       { text: "QR Code exclusivo", included: true },
-      { text: "Música personalizada", included: false },
+      { text: "Cápsulas do tempo", included: false },
+      { text: "Música integrada", included: false },
       { text: "Temas exclusivos", included: false },
       { text: "URL personalizada", included: false },
     ],
   },
   {
-    name: "Celebração Eterna",
-    price: "R$ 49",
-    period: "/único",
+    name: "Premium Mensal",
+    price: "R$ 29,99",
+    period: "/mês",
     popular: true,
+    icon: Star,
     features: [
-      { text: "Acesso vitalício", included: true },
-      { text: "Até 7 fotos especiais", included: true },
-      { text: "Contador personalizado", included: true },
+      { text: "Tudo do Vitalício", included: true },
+      { text: "Até 7 fotos + vídeos", included: true },
+      { text: "Contador em tempo real", included: true },
       { text: "QR Code exclusivo", included: true },
-      { text: "Música personalizada", included: true },
+      { text: "Cápsulas do tempo", included: true },
+      { text: "Música integrada", included: true },
       { text: "Temas exclusivos", included: true },
       { text: "URL personalizada", included: true },
     ],
@@ -60,7 +64,10 @@ const PricingSection = () => {
                   Mais Popular
                 </span>
               )}
-              <h3 className="text-xl font-bold text-foreground text-center mb-2">{plan.name}</h3>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <plan.icon className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
+              </div>
               <div className="text-center mb-6">
                 <span className="text-4xl font-bold text-primary">{plan.price}</span>
                 <span className="text-muted-foreground">{plan.period}</span>
@@ -82,7 +89,7 @@ const PricingSection = () => {
               </ul>
 
               <Button
-                onClick={() => navigate("/cadastro")}
+                onClick={() => navigate("/criar")}
                 className={`w-full rounded-full py-6 text-lg ${
                   plan.popular
                     ? "bg-gradient-cta text-primary-foreground hover:opacity-90"
