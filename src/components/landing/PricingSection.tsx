@@ -81,7 +81,7 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <Button
+              onClick={() => navigate("/cadastro")}
                 className={`w-full rounded-full py-6 text-lg ${
                   plan.popular
                     ? "bg-gradient-cta text-primary-foreground hover:opacity-90"
