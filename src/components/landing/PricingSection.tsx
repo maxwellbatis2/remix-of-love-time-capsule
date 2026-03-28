@@ -1,5 +1,6 @@
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
@@ -35,6 +36,7 @@ const plans = [
 ];
 
 const PricingSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 px-4">
       <div className="container max-w-4xl">
@@ -80,6 +82,7 @@ const PricingSection = () => {
               </ul>
 
               <Button
+                onClick={() => navigate("/cadastro")}
                 className={`w-full rounded-full py-6 text-lg ${
                   plan.popular
                     ? "bg-gradient-cta text-primary-foreground hover:opacity-90"

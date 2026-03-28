@@ -1,7 +1,9 @@
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const CTASection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 px-4">
       <div className="container max-w-3xl">
@@ -15,6 +17,7 @@ const CTASection = () => {
           </p>
           <Button
             size="lg"
+            onClick={() => navigate("/cadastro")}
             className="bg-background text-foreground hover:bg-background/90 text-lg px-10 py-6 rounded-full relative z-10"
           >
             <Heart className="mr-2 h-5 w-5 text-primary" />
