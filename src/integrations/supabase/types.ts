@@ -14,7 +14,157 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      love_pages: {
+        Row: {
+          created_at: string
+          id: string
+          is_published: boolean
+          message: string | null
+          music_url: string | null
+          partner1_name: string
+          partner2_name: string
+          payment_status: string
+          plan: string
+          slug: string
+          start_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          message?: string | null
+          music_url?: string | null
+          partner1_name: string
+          partner2_name: string
+          payment_status?: string
+          plan?: string
+          slug: string
+          start_date: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          message?: string | null
+          music_url?: string | null
+          partner1_name?: string
+          partner2_name?: string
+          payment_status?: string
+          plan?: string
+          slug?: string
+          start_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      love_photos: {
+        Row: {
+          created_at: string
+          id: string
+          page_id: string
+          photo_url: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          page_id: string
+          photo_url: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          page_id?: string
+          photo_url?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "love_photos_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "love_pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payments: {
+        Row: {
+          amount: number
+          cakto_payment_id: string | null
+          created_at: string
+          id: string
+          page_id: string
+          plan: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          cakto_payment_id?: string | null
+          created_at?: string
+          id?: string
+          page_id: string
+          plan: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          cakto_payment_id?: string | null
+          created_at?: string
+          id?: string
+          page_id?: string
+          plan?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "love_pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
