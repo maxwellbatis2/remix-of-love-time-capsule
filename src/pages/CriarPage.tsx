@@ -12,7 +12,10 @@ import couple2 from "@/assets/couple-2.webp";
 
 const CriarPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [step, setStep] = useState(0);
+  const [isSaving, setIsSaving] = useState(false);
+  const [pageId, setPageId] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<"vitalicio" | "mensal" | null>(null);
   const [data, setData] = useState({
     coupleName: "",
