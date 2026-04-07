@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import demoCouple from "@/assets/demo-couple.jpg";
 import couple1 from "@/assets/couple-1.webp";
 import couple2 from "@/assets/couple-2.webp";
+import coupleBeach from "@/assets/couple-beach.jpg";
+import coupleFlamengo from "@/assets/couple-flamengo.jpg";
 import FloatingHearts from "@/components/FloatingHearts";
 
 const DEMO_START_DATE = new Date("2026-02-01T00:00:00");
@@ -30,7 +32,7 @@ const DemoPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const photos = [demoCouple, couple1, couple2];
+  const photos = [demoCouple, couple1, couple2, coupleBeach, coupleFlamengo];
 
   const messages = [
     "Cada segundo ao seu lado é um presente. Te amo mais do que palavras podem expressar. 💕",
@@ -53,7 +55,7 @@ const DemoPage = () => {
       <div className="max-w-lg mx-auto px-4 py-8 space-y-8 relative z-20">
         {/* Couple Names */}
         <div className="text-center animate-fade-in">
-          <h1 className="text-gradient text-4xl font-bold font-display mb-2">Maxwell & Gabrila</h1>
+          <h1 className="text-gradient text-4xl font-bold font-display mb-2"><h1 className="text-gradient text-4xl font-bold font-display mb-2">Maxwell & Gabriela</h1></h1>
           <p className="text-muted-foreground text-sm">Juntos desde 01/02/2026</p>
         </div>
 
