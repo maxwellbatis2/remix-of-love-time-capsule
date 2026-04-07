@@ -63,10 +63,80 @@ const CriarPage = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleFinish = () => {
+  const generateSlug = () => {
+    const names = data.coupleName.toLowerCase().replace(/\s*&\s*/g, "-e-").replace(/[^a-z0-9-]/g, "");
+    return `${names}-${Date.now().toString(36)}`;
+  };
+
+  const savePage = async () => {
+    if (!user) {
+      toast.error("Faça login primeiro!");
+      navigate("/cadastro");
+      return null;
+    }
+    const slug = generateSlug();
+    const [p1, p2] = data.coupleName.split(/\s*&\s*/);
+    
+    const { data: page, error } = await supabase.from("love_pages").insert({
+      user_id: user.id,
+      partner1_name: p1 || data.coupleName,
+      partner2_name: p2 || "",
+      start_date: data.startDate || new Date().toISOString().split("T")[0],
+      message: data.message || null,
+      music_url: data.musicUrl || null,
+      slug,
+      plan: selectedPlan === "mensal" ? "monthly" : "lifetime",
+    }).select().single();
+
+    if (error) { toast.error("Erro ao salvar: " + error.message); return null; }
+
+    // Upload photos
+    for (let i = 0; i < photos.length; i++) {
+      if (!photos[i]) continue;
+      const blob = await fetch(photos[i]).then(r => r.blob());
+      const filePath = `${user.id}/${page.id}/${i}.jpg`;
+      const { error: upErr } = await supabase.storage.from("love-photos").upload(filePath, blob);
+      if (!upErr) {
+        const { data: urlData } = supabase.storage.from("love-photos").getPublicUrl(filePath);
+        await supabase.from("love_photos").insert({
+          page_id: page.id,
+          photo_url: urlData.publicUrl,
+          sort_order: i,
+        });
+      }
+    }
+    return page;
+  };
+
+  const handleFinish = async () => {
     if (!selectedPlan) { toast.error("Escolha um plano!"); return; }
-    toast.success("Pagamento simulado! Sua página está pronta 🎉");
-    setStep(5);
+    setIsSaving(true);
+    try {
+      const page = await savePage();
+      if (!page) { setIsSaving(false); return; }
+      setPageId(page.id);
+
+      // Create payment via edge function
+      const { data: payData, error: payErr } = await supabase.functions.invoke("create-payment", {
+        body: { page_id: page.id, plan: page.plan },
+      });
+
+      if (payErr) throw payErr;
+
+      if (payData?.checkout_url) {
+        window.location.href = payData.checkout_url;
+      } else {
+        // If no checkout URL, simulate success for now
+        await supabase.from("love_pages").update({ payment_status: "paid", is_published: true }).eq("id", page.id);
+        toast.success("Página criada com sucesso! 🎉");
+        setStep(5);
+      }
+    } catch (err: any) {
+      console.error(err);
+      toast.error("Erro no pagamento: " + (err.message || "Tente novamente"));
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const displayPhotos = photos.length > 0 ? photos.filter(Boolean) : [couple1, couple2];
