@@ -519,12 +519,14 @@ const CriarPage = () => {
             <Button
               onClick={step === 4 ? handleFinish : () => {
                 if (step === 0 && !data.coupleName) { toast.error("Preencha o nome do casal!"); return; }
+                if (step === 0 && !user) { toast.info("Crie sua conta para continuar!"); navigate("/cadastro"); return; }
                 setStep(step + 1);
               }}
+              disabled={isSaving}
               className="w-full bg-gradient-cta text-primary-foreground hover:opacity-90 h-12 rounded-xl text-lg shadow-glow"
             >
               {step === 4 ? (
-                <><CreditCard className="mr-2 h-5 w-5" /> Finalizar e Pagar</>
+                isSaving ? <span className="animate-pulse-slow">Processando...</span> : <><CreditCard className="mr-2 h-5 w-5" /> Finalizar e Pagar</>
               ) : (
                 <>Continuar <ArrowLeft className="ml-2 h-5 w-5 rotate-180" /></>
               )}
