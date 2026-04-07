@@ -2,6 +2,7 @@ import { Heart, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-couple.jpg";
+import coupleQrcode from "@/assets/couple-qrcode.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -39,13 +40,18 @@ const HeroSection = () => {
       <div className="bg-card border border-border rounded-xl px-6 py-4 mb-10 relative z-10">
         <p className="text-foreground">
           <span className="text-primary font-semibold">🎉 Sucesso!</span>{" "}
-          <strong>73 casais</strong> já criaram suas lembranças especiais hoje. Não perca essa chance!
+          <strong>733 casais</strong> já criaram suas lembranças especiais hoje. Não perca essa chance!
         </p>
       </div>
 
-      {/* Hero image */}
-      <div className="relative z-10 w-full max-w-lg rounded-2xl overflow-hidden shadow-card">
-        <img src={heroImage} alt="Casal feliz usando My Love You" width={1024} height={768} className="w-full h-auto object-cover" />
+      {/* Hero images */}
+      <div className="relative z-10 w-full max-w-lg space-y-6">
+        <div className="rounded-2xl overflow-hidden shadow-card">
+          <img src={heroImage} alt="Casal feliz usando My Love You" width={1024} height={768} className="w-full h-auto object-cover" />
+        </div>
+        <div className="rounded-2xl overflow-hidden shadow-card border border-border">
+          <img src={coupleQrcode} alt="Casal feliz mostrando QR Code My Love You" width={1024} height={1280} className="w-full h-auto object-cover" />
+        </div>
       </div>
     </section>
   );
