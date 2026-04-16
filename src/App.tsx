@@ -9,6 +9,11 @@ import DemoPage from "./pages/DemoPage.tsx";
 import CadastroPage from "./pages/CadastroPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import CriarPage from "./pages/CriarPage.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx";
+import PerfilPage from "./pages/PerfilPage.tsx";
+import PainelPaginaPage from "./pages/PainelPaginaPage.tsx";
+import AdminPage from "./pages/AdminPage.tsx";
+import PaginaPublicaPage from "./pages/PaginaPublicaPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +31,11 @@ const App = () => (
             <Route path="/cadastro" element={<CadastroPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/criar" element={<CriarPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/perfil" element={<PerfilPage />} />
+            <Route path="/painel/:id" element={<PainelPaginaPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/p/:slug" element={<PaginaPublicaPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
