@@ -1,4 +1,5 @@
 import TimerBadge from "@/components/landing/TimerBadge";
+import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
@@ -12,6 +13,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <TimerBadge />
+      <Header />
       <HeroSection />
       <FeaturesSection />
       <TestimonialsSection />
