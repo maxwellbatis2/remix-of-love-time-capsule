@@ -35,10 +35,10 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate("/admin")}
-                  className="text-foreground hidden sm:flex"
+                  className="text-foreground"
                 >
-                  <Shield className="h-4 w-4 mr-1" />
-                  Admin
+                  <Shield className="h-4 w-4 sm:mr-1" />
+                  <span className="hidden sm:inline">Admin</span>
                 </Button>
               )}
               <Button
