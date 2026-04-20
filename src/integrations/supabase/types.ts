@@ -144,6 +144,7 @@ export type Database = {
           created_at: string
           full_name: string
           id: string
+          is_blocked: boolean
           updated_at: string
           user_id: string
         }
@@ -152,6 +153,7 @@ export type Database = {
           created_at?: string
           full_name: string
           id?: string
+          is_blocked?: boolean
           updated_at?: string
           user_id: string
         }
@@ -160,6 +162,7 @@ export type Database = {
           created_at?: string
           full_name?: string
           id?: string
+          is_blocked?: boolean
           updated_at?: string
           user_id?: string
         }
@@ -183,6 +186,36 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      webhook_logs: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          event_type: string | null
+          id: string
+          payload: Json | null
+          provider: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          event_type?: string | null
+          id?: string
+          payload?: Json | null
+          provider?: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          event_type?: string | null
+          id?: string
+          payload?: Json | null
+          provider?: string
+          status?: string
         }
         Relationships: []
       }

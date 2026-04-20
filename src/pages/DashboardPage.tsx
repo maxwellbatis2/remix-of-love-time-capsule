@@ -34,6 +34,10 @@ const DashboardPage = () => {
   }, [authLoading, user, navigate]);
 
   useEffect(() => {
+    if (isAdmin) navigate("/admin", { replace: true });
+  }, [isAdmin, navigate]);
+
+  useEffect(() => {
     if (!user) return;
     const load = async () => {
       const [{ data: p }, { data: prof }] = await Promise.all([
